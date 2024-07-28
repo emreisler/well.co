@@ -48,11 +48,15 @@ This is a simple Node.js service that uses Redis to store and query key-value pa
 To submit a key, use the `POST /input` endpoint:
 
 ```sh
-curl -X POST -d "exampleKey" http://localhost:9000/input
+curl --location 'http://localhost:9000/input' \
+--header 'Content-Type: text/plain' \
+--data 'exampleKey1'
 ```
 
 To query the count of a key, use the `GET /query` endpoint with the key query parameter:
 
 ```sh
-curl "http://localhost:9000/query?key=exampleKey"
+curl --location --request GET 'http://localhost:9000/query?key=exampleKey1' \
+--header 'Content-Type: text/plain' \
+--data 'exampleKey'
 ```
