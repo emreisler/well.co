@@ -41,18 +41,15 @@ app.post('/input', async (req, res) => {
 
     const key = req.body.trim();
 
-    //if a mutex created for the key use it, create a new one otherwise
-    const mutex = getMutexForKey(key);
-    await mutex.runExclusive(async () => {
-        try {
-            //redis incr is atomic!!
-            await client.incr(key);
-            res.sendStatus(200);
-        } catch (err) {
-            console.error('Error handling POST /input:', err);
-            res.sendStatus(500);
-        }
-    });
+    try {
+        //redis incr is atomic!!
+        await client.incr(key);
+        res.sendStatus(200);
+    } catch (err) {
+        console.error('Error handling POST /input:', err);
+        res.sendStatus(500);
+    }
+
 });
 
 // Handler for GET /query
