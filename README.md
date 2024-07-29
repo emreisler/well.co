@@ -2,10 +2,16 @@
 
 This is a simple Node.js service that uses Redis to store and query key-value pairs. The service listens on port 9000 and provides two endpoints: `POST /input` and `GET /query`.
 
+# Overview
+
+The purpose of the service is keep the counts of the submitted keys count and expose counts from a query endpoint.
+
+Redis persistence is used to store key values to disc at every write and as a cache for the reads.
+
 ## Prerequisites
 
 - Node.js and npm installed
-- Redis Docker container running
+- Docker installed
 
 ## Installation
 
@@ -22,12 +28,10 @@ This is a simple Node.js service that uses Redis to store and query key-value pa
     ```sh
     npm install
     ```
-
-## Running Redis with Docker
-
-1. Run the Redis container:
+4. Run the Redis container:
 
     ```sh
+    cd docker-compose
     docker-compose up -d
     ```
 
@@ -36,6 +40,7 @@ This is a simple Node.js service that uses Redis to store and query key-value pa
 1. Start the Node.js application:
 
     ```sh
+    cd path/to/your/project
     node server.js
     ```
 
@@ -58,5 +63,5 @@ To query the count of a key, use the `GET /query` endpoint with the key query pa
 ```sh
 curl --location --request GET 'http://localhost:9000/query?key=exampleKey1' \
 --header 'Content-Type: text/plain' \
---data 'exampleKey'
+--data 'exampleKey1'
 ```

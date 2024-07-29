@@ -17,15 +17,8 @@
   },
   "homepage": "https://github.com/emreisler/well.co#readme",
   "dependencies": {
-    "async-mutex": "^0.5.0",
     "body-parser": "^1.20.2",
-    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsoning": "^1.0.1",
-    "level": "^8.0.1",
-    "leveldown": "^6.1.1",
-    "levelup": "^5.1.1",
-    "mongoose": "^8.5.1",
     "redis": "^4.6.15"
   }
 }

@@ -42,7 +42,7 @@ app.post('/input', async (req, res) => {
     const key = req.body.trim();
 
     try {
-        //redis incr is atomic!!
+        //redis incr is atomic.
         await client.incr(key);
         res.sendStatus(200);
     } catch (err) {
